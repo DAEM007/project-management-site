@@ -1,5 +1,5 @@
 // All styles
-import "./ProjectDetails.css";
+import "./Project.css";
 
 const ProjectDetails = () => {
 
