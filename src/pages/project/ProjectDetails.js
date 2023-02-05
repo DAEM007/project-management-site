@@ -2,8 +2,9 @@
 import "./ProjectDetails.css";
 
 const ProjectDetails = () => {
+
     return (
-        <div>Project Details</div>
+        <div>Project Details</div> 
     );
 }
  
