@@ -5,7 +5,6 @@ import './App.css';
 // All components import
 import NavBar from './components/NavBar';
 import SideBar from './components/SideBar';
-
 // All pages import
 import Dashboard from "./pages/dashboard/Dashboard";
 import Project from "./pages/project/Project";
