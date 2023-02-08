@@ -1,3 +1,4 @@
+/* Sidebar Style */
 .sidebar {
     width: 300px;
     min-width: 300px;
@@ -53,3 +54,4 @@
 .sidebar .links .active img {
     filter: invert(40%);
 }
+
