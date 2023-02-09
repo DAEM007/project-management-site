@@ -13,7 +13,6 @@ const Signup = () => {
     // submit form
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Thumbnail updated!');
         console.log(name, password, email, thumbnail);
     }
 
@@ -39,6 +38,7 @@ const Signup = () => {
 
         setThumbnailError(null);
         setThumbnail(selected);
+        console.log('Thumbnail updated!');
         
     }
 
