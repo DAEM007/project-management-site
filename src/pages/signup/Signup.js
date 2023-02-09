@@ -10,12 +10,14 @@ const Signup = () => {
     const [thumbnail, setThumbnail] = useState(null);
     const [thumbnailError, setThumbnailError] = useState(null);
 
+    // submit form
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Thumbnail updated!');
         console.log(name, password, email, thumbnail);
     }
 
+    // handle Thumbnail
     const handleThumbnail = (e) => {
         setThumbnailError(null);
         let selected = e.target.files[0];
