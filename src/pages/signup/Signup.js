@@ -12,6 +12,7 @@ const Signup = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log('Thumbnail updated!');
         console.log(name, password, email, thumbnail);
     }
 
