@@ -1,5 +1,7 @@
 // All react imports
 import { useState } from "react";
+// All hooks import
+import useSignup from "../../hooks/useSignup";
 // All styles
 import "./Signup.css";
 
@@ -9,11 +11,12 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [thumbnail, setThumbnail] = useState(null);
     const [thumbnailError, setThumbnailError] = useState(null);
+    const { error, isPending, signUp } = useSignup();
 
     // submit form
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(name, password, email, thumbnail);
+        signUp(email, password, name, thumbnail);
     }
 
     // handle Thumbnail
@@ -81,7 +84,9 @@ const Signup = () => {
                 />
                 { thumbnailError && <div className="error">{ thumbnailError }</div> }
             </label>
-            <button className="btn">Sign up</button>
+            { !isPending && <button className="btn">Sign up</button> }
+            { isPending && <button className="btn">Loading...</button> }
+            { error && <div className="error">{ error }</div> }
         </form>
     );
 }
