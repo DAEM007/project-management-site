@@ -24,7 +24,7 @@ const Signup = () => {
         setThumbnailError(null);
         let selected = e.target.files[0];
 
-        // console.log(selected);
+        console.log(selected);
 
         if(!selected){
             setThumbnailError('Please select a file');
@@ -85,7 +85,7 @@ const Signup = () => {
                 { thumbnailError && <div className="error">{ thumbnailError }</div> }
             </label>
             { !isPending && <button className="btn">Sign up</button> }
-            { isPending && <button className="btn">Loading...</button> }
+            { isPending && <button className="btn" disabled >Loading...</button> }
             { error && <div className="error">{ error }</div> }
         </form>
     );
