@@ -1,7 +1,8 @@
 // All react imports
 import { useState } from "react";
 // Firebase imports
-import { auth, storage } from "../firebase/Config";
+import { auth, storage, db } from "../firebase/Config";
+import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 // all hooks import
@@ -33,11 +34,17 @@ const useSignup = () => {
             const avatarRef = ref(storage, uploadPath);
             await uploadBytes(avatarRef, thumbnail);
             const avatarUrl = await getDownloadURL(avatarRef);
-            
 
             // If we do get a response for cred then we can update the user's information
             await updateProfile(cred.user, { displayName: name, photoURL: avatarUrl });
-            
+
+            // create a user document in firebase firestore
+            const docRef = doc(db, "users", cred.user.uid);
+            await setDoc(docRef, {
+                online: true,
+                userName: name,
+                imgURL: avatarUrl 
+            });
 
             // dispatch an action to Signup/Login
             dispatch({type: 'LOGIN', payload: cred.user});
