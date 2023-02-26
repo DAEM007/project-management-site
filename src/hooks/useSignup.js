@@ -1,8 +1,7 @@
 // All react imports
 import { useState } from "react";
 // Firebase imports
-import { auth } from "../firebase/Config";
-import { storage } from "../firebase/Config";
+import { auth, storage } from "../firebase/Config";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 // all hooks import
@@ -31,12 +30,14 @@ const useSignup = () => {
 
             // upload user thumbnail
             const uploadPath = `thumbnails/${cred.user.uid}/${thumbnail.name}`;
-            const imgRef = ref(storage, uploadPath);
-            const img = await uploadBytes(imgRef, thumbnail);
-            const imgUrl = await getDownloadURL(img);
+            const avatarRef = ref(storage, uploadPath);
+            await uploadBytes(avatarRef, thumbnail);
+            const avatarUrl = await getDownloadURL(avatarRef);
+            
 
             // If we do get a response for cred then we can update the user's information
-            await updateProfile(cred.user, { displayName: name, photoURL: imgUrl });
+            await updateProfile(cred.user, { displayName: name, photoURL: avatarUrl });
+            
 
             // dispatch an action to Signup/Login
             dispatch({type: 'LOGIN', payload: cred.user});
@@ -47,11 +48,9 @@ const useSignup = () => {
             
         }
         catch(err){
-
             console.log(err.message);
             setError(err.message);
             setIsPending(false);
-           
         }
         
     }
