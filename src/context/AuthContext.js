@@ -15,7 +15,7 @@ export const authReducer = (state, action) => {
             return { ...state, user: null }
         case 'AUTH_IS_READY':
             return { ...state, user: action.payload, authIsReady: true }
-
+        // default case for the dispatch action
         default:
             return state;
     }
