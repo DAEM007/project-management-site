@@ -42,8 +42,8 @@ const useSignup = () => {
             const docRef = doc(db, "users", cred.user.uid);
             await setDoc(docRef, {
                 online: true,
-                userName: name,
-                imgURL: avatarUrl 
+                displayName: name,
+                photoURL: avatarUrl
             });
 
             // dispatch an action to Signup/Login
