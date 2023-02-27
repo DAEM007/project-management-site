@@ -1,8 +1,9 @@
 // All react imports
 import { useState } from "react";
 // All firebase imports
-import { auth } from "../firebase/Config";
+import { auth, db } from "../firebase/Config";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, updateDoc } from "firebase/firestore";
 // All hooks import
 import { useAuthContext } from "./useAuthContext";
 
@@ -28,6 +29,12 @@ const useLogin = () => {
 
             // dispatch a login action similar to the signup
             dispatch({ type: 'LOGIN', payload: cred.user });
+
+            // change the online/offline status of the users
+            const docRef = doc(db, "users", cred.user.uid);
+            await updateDoc(docRef, {
+                online: true
+            });
 
             // update states 
             setError(null);
