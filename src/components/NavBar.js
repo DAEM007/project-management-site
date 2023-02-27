@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 import "./NavBar.css";
 // All images import
 import temple from "../assets/temple.svg";
+// All hooks import
+import useLogout from "../hooks/useLogout";
 
 const NavBar = () => {
+    const { error, ispending, logout } = useLogout();
+
     return (
         <div className="navbar">
             <ul>
@@ -18,7 +22,9 @@ const NavBar = () => {
 
                 
                 <li>
-                    <button className="btn">Logout</button>
+                    { !ispending && <button className="btn" onClick={logout}>Logout</button> }
+                    { ispending && <button className="btn" disabled >Logging out...</button> }
+                    { error && <p>{ error }</p> }
                 </li>
             </ul>
         </div>
