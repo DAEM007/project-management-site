@@ -34,7 +34,6 @@ const Login = () => {
                     required 
                 />
             </label>
-            {/* <button className="btn">Login</button> */}
             { !isPending && <button className="btn">Login</button> }
             { isPending && <button className="btn" disabled >Loading...</button> }
             { error && <div className="error">{ error }</div> }
