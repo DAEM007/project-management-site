@@ -24,7 +24,7 @@ const NavBar = () => {
                 <li>
                     { !ispending && <button className="btn" onClick={logout}>Logout</button> }
                     { ispending && <button className="btn" disabled >Logging out...</button> }
-                    { error && <p>{ error }</p> }
+                    { error && <div>{ error }</div> }
                 </li>
             </ul>
         </div>
