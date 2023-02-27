@@ -22,6 +22,12 @@ const useLogin = () => {
             const cred = await signInWithEmailAndPassword(auth, email, password);
             // console.log({user: cred.user});
 
+            // change the online/offline status of the users
+            const docRef = doc(db, "users", cred.user.uid);
+            await updateDoc(docRef, {
+                online: true
+            });
+
             // If we don't get a response for the cred then we need to throw an error
             if(!cred){
                 throw Error('could not complete login!');
@@ -29,12 +35,6 @@ const useLogin = () => {
 
             // dispatch a login action similar to the signup
             dispatch({ type: 'LOGIN', payload: cred.user });
-
-            // change the online/offline status of the users
-            const docRef = doc(db, "users", cred.user.uid);
-            await updateDoc(docRef, {
-                online: true
-            });
 
             // update states 
             setError(null);
