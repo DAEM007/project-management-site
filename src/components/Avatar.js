@@ -8,6 +8,6 @@ const Avatar = ({ src }) => {
         </div>
     );
 }
- 
+
 export default Avatar;
 
