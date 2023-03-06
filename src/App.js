@@ -5,6 +5,7 @@ import './App.css';
 // All components import
 import NavBar from './components/NavBar';
 import SideBar from './components/SideBar';
+import OnlineUsers from './components/OnlineUsers';
 // All hooks import
 import { useAuthContext } from './hooks/useAuthContext';
 // All pages import
@@ -47,6 +48,7 @@ function App() {
               />
             </Routes>
           </div>
+          { user && <OnlineUsers /> }
         </Router>
       )}
     </div>
