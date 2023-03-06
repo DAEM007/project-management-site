@@ -1,5 +1,5 @@
-/* online users styles */
 
+/* online users styles */
 .user-list {
     width: 250px;
     min-width: 250px;
@@ -28,4 +28,14 @@
     margin-left: 10px;
     width: 40px;
     height: 40px;
+}
+
+.user-list .online-user {
+    display: inline-block;
+    background-color: #0ebb50;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: 2px;
 }
