@@ -6,17 +6,18 @@ import useCollection from "../hooks/useCollection";
 import Avatar from "./Avatar";
 
 const OnlineUsers = () => {
-    const { documents, error, isPending } = useCollection('users');
+    const { documents: users, error, isPending } = useCollection('users');
 
     return (
         <div className="user-list">
             <h2>All users</h2>
             { error && <div className="error">{ error }</div> }
             { isPending && <div className="loading">Loading users...</div> }
-            { documents && documents.map((user) => (
+            { users && users.map((user) => (
                 <div key={user.id} className="user-list-item">
-                     <span>{ user.displayName }</span>
-                     <Avatar src={ user.photoURL } />
+                    { user.online && <span className="online-user"></span> }
+                    <span>{ user.displayName }</span>
+                    <Avatar src={ user.photoURL } />
                 </div>
             )) }
         </div>
