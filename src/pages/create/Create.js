@@ -39,13 +39,12 @@ const Create = () => {
     // submit form
     const handleSubmit = (e) => {
         e.preventDefault();
-        // check for the project category
+        // checking for errors in the project category and the assigned users
         setErrorForm(null);
         if(!category) {
             setErrorForm('Please select a project category!');
             return;
         }
-        // check for the assigned users
         if(assignedUsers.length < 1) {
             setErrorForm('Please select at least one(1) assigned user');
             return;
