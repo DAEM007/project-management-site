@@ -24,6 +24,7 @@ const Create = () => {
     const [dueDate, setDueDate] = useState('');
     const [category, setCategory] = useState('');
     const [assignedUsers, setAssignedUsers] = useState([]);
+    const [errorForm, setErrorForm] = useState(null);
 
     // map through the documents from the users collection and return a new array of objects
     useEffect(() => {
@@ -31,13 +32,25 @@ const Create = () => {
             const options = documents.map((user) => {
                 return { value: user, label: user.displayName }
             })
-            setUsers(options)
+            setUsers(options);
         }
     }, [documents])
 
     // submit form
     const handleSubmit = (e) => {
         e.preventDefault();
+        // check for the project category
+        setErrorForm(null);
+        if(!category) {
+            setErrorForm('Please select a project category!');
+            return;
+        }
+        // check for the assigned users
+        if(assignedUsers.length < 1) {
+            setErrorForm('Please select at least one(1) assigned user');
+            return;
+        }
+
         console.log(name, details, dueDate, category.value, assignedUsers);
     }
 
@@ -88,6 +101,7 @@ const Create = () => {
                     />
                 </label>
                 <button className="btn">Add Project</button>
+                { errorForm &&  <p className="error">{ errorForm }</p> }
             </form>
         </div>
     );
