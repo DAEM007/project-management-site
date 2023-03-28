@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 // All hooks imports
 import useCollection from "../../hooks/useCollection";
+import { useAuthContext } from "../../hooks/useAuthContext";
+// All firebase imports
+import { timestamp } from "../../firebase/Config";
 // All styles
 import "./Create.css";
 
@@ -15,6 +18,7 @@ const categories = [
 ]
 
 const Create = () => {
+    const { user } = useAuthContext();
     // options for the assigned users
     const { documents } = useCollection('users');
     const [users, setUsers] = useState([]);
@@ -50,7 +54,33 @@ const Create = () => {
             return;
         }
 
-        console.log(name, details, dueDate, category.value, assignedUsers);
+        // assignedUser 
+        const assignedUserList = assignedUsers.map((assignedUser) => {
+            return {
+                displayName: assignedUser.value.displayName,
+                photoURL: assignedUser.value.photoURL,
+                id: assignedUser.value.id
+            }
+        })
+
+        // createdBy user
+        const createdBy = {
+            name: user.displayName,
+            photo: user.photoURL,
+            id: user.uid
+        }
+
+        // project object to be saved to firebase
+        const project = {
+            name: name,
+            details: details,
+            dueDate: timestamp.fromDate(new Date(dueDate)),
+            comments: [],
+            createdBy,
+            assignedUserList
+        }
+
+        console.log(project);
     }
 
     return (
