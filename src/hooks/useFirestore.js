@@ -15,7 +15,7 @@ const firestoreReducer = (action, state) => {
                 document: null,
                 success: false
             }
-        // check action type for Adddoc
+        // check action type for AddDoc
         case 'ADD_DOC':
             return {
                 error: null,
@@ -96,5 +96,5 @@ const useFirestore = (col) => {
    return { response, AddDocument, DeleteDocument };
 
 }
- 
+
 export default useFirestore;
