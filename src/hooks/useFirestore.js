@@ -39,7 +39,7 @@ const firestoreReducer = (action, state) => {
                 document: null,
                 success: false
             }
-
+        // return default state
         default:
             return state;
     }
