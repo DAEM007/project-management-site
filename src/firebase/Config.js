@@ -7,13 +7,12 @@ import { getStorage } from 'firebase/storage';
 
 // firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyCuP3VAd3uNeqUHfzbMKwAtODEbuP95_8c",
-  authDomain: "project-management-site-14d20.firebaseapp.com",
-  projectId: "project-management-site-14d20",
-  storageBucket: "project-management-site-14d20.appspot.com",
-  messagingSenderId: "803242140053",
-  appId: "1:803242140053:web:60b0143d69cf85db53d69c",
-  measurementId: "G-SL50ZGEL4C"
+  apiKey: "AIzaSyALR7disbm5321NF7D8IjTuWpfsjpDB1TQ",
+  authDomain: "project-management-site-1888d.firebaseapp.com",
+  projectId: "project-management-site-1888d",
+  storageBucket: "project-management-site-1888d.appspot.com",
+  messagingSenderId: "397237857730",
+  appId: "1:397237857730:web:6be29b326a477147af3a5b"
 };
 
 // Initialize Firebase
