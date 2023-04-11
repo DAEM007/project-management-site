@@ -1,9 +1,11 @@
 // All react imports
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 // All hooks imports
 import useCollection from "../../hooks/useCollection";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import useFirestore from "../../hooks/useFirestore";
 // All firebase imports
 import { timestamp } from "../../firebase/Config";
 // All styles
@@ -19,6 +21,8 @@ const categories = [
 
 const Create = () => {
     const { user } = useAuthContext();
+    const { response, AddDocument } = useFirestore('projects');
+    const navigate = useNavigate();
     // options for the assigned users
     const { documents } = useCollection('users');
     const [users, setUsers] = useState([]);
@@ -30,18 +34,21 @@ const Create = () => {
     const [assignedUsers, setAssignedUsers] = useState([]);
     const [errorForm, setErrorForm] = useState(null);
 
-    // map through the documents from the users collection and return a new array of objects
+    // map through the documents from the users collection and return a new array of objects that we then use as options in assigned users.
     useEffect(() => {
         if(documents) {
             const options = documents.map((user) => {
-                return { value: user, label: user.displayName }
+                return { 
+                    value: user,
+                    label: user.displayName
+                }
             })
             setUsers(options);
         }
     }, [documents])
 
     // submit form
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // checking for errors in the project category and the assigned users
         setErrorForm(null);
@@ -50,8 +57,15 @@ const Create = () => {
             return;
         }
         if(assignedUsers.length < 1) {
-            setErrorForm('Please select at least one(1) assigned user');
+            setErrorForm('Please select at least one(1) assigned user!');
             return;
+        }
+
+        // createdBy user
+        const createdBy = {
+            name: user.displayName,
+            photoURL: user.photoURL,
+            id: user.uid
         }
 
         // assignedUser 
@@ -63,24 +77,26 @@ const Create = () => {
             }
         })
 
-        // createdBy user
-        const createdBy = {
-            name: user.displayName,
-            photo: user.photoURL,
-            id: user.uid
-        }
-
         // project object to be saved to firebase
         const project = {
-            name: name,
-            details: details,
-            dueDate: timestamp.fromDate(new Date(dueDate)),
-            comments: [],
+            name,
+            details,
+            assignedUserList,
             createdBy,
-            assignedUserList
+            category: category.value,
+            dateDue: timestamp.fromDate(new Date(dueDate)),
+            comments: [],
         }
 
-        console.log(project);
+        // save the project document to firestore
+        // console.log(project);
+        await AddDocument(project);
+        
+        // Redirect user to the dashboard
+        if(!response.error) {
+            navigate('/');
+        }
+
     }
 
     return (
