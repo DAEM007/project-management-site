@@ -6,12 +6,12 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import useFirestore from "../../hooks/useFirestore";
 
 export default function ProjectSummary({ project }) {
-  const { deleteDocument } = useFirestore('projects')
+  const { DeleteDocument } = useFirestore('projects')
   const { user } = useAuthContext()
   const navigate = useNavigate();
 
   const handleClick = () => {
-    deleteDocument(project.id)
+    DeleteDocument(project.id)
     navigate('/');
   }
 
