@@ -1,7 +1,20 @@
 // All components imports
+import { useNavigate } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+// All hooks import
+import { useAuthContext } from "../../hooks/useAuthContext";
+import useFirestore from "../../hooks/useFirestore";
 
 export default function ProjectSummary({ project }) {
+  const { deleteDocument } = useFirestore('projects')
+  const { user } = useAuthContext()
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    deleteDocument(project.id)
+    navigate('/');
+  }
+
   return (
     <div>
       <div className="project-summary">
@@ -21,6 +34,9 @@ export default function ProjectSummary({ project }) {
           ))}
         </div>
       </div>
+      {user.uid === project.createdBy.id && (
+        <button className="btn" onClick={handleClick}>Mark as Complete</button>
+      )}
     </div>
   )
 }
