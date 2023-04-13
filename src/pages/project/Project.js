@@ -6,6 +6,7 @@ import "./Project.css";
 import useDocument from "../../hooks/useDocument";
 // All components imports
 import ProjectSummary from "./ProjectSummary";
+import ProjectComments from "./ProjectComments";
 
 const ProjectDetails = () => {
     const { id } = useParams();
@@ -16,6 +17,7 @@ const ProjectDetails = () => {
             { error && <div className="error">{error}</div> }
             { !document && <div className="loading">Loading...</div> }
             { document && <ProjectSummary project={document} /> }
+            { document && <ProjectComments project={document} /> }
         </div> 
     );
 }
