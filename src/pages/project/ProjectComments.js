@@ -7,6 +7,8 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import useFirestore from "../../hooks/useFirestore";
 // All components import
 import Avatar from "../../components/Avatar";
+// All library imports
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 
 const ProjectComments = ({ project }) => {
@@ -47,7 +49,7 @@ const ProjectComments = ({ project }) => {
                     <p>{comment.displayName}</p>
                     </div>
                     <div className="comment-date">
-                    <p>date here</p>
+                    <p>{ formatDistanceToNow(comment.createdAt.toDate(), { addSuffix: true }) }</p>
                     </div>
                     <div className="comment-content">
                     <p>{comment.content}</p>
