@@ -7,6 +7,8 @@ import temple from "../assets/temple.svg";
 // All hooks import
 import useLogout from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { AiOutlineMenu } from 'react-icons/ai';
+// import { AiOutlineClose } from 'react-icons/ai';
 
 const NavBar = () => {
     const { error, ispending, logout } = useLogout();
@@ -29,6 +31,17 @@ const NavBar = () => {
                 
                 { user && (
                     <li>
+                        { !ispending && 
+                            <>
+                                <AiOutlineMenu 
+                                    // You can conditionally render the code below for toggle
+                                    className="menu"
+                                />
+                                {/* <AiOutlineClose
+                                    className="close"
+                                /> */}
+                            </>
+                        }
                         { !ispending && <button className="btn" onClick={logout}>Logout</button> }
                         { ispending && <button className="btn" disabled >Logging out...</button> }
                         { error && <div>{ error }</div> }
