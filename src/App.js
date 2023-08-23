@@ -1,5 +1,6 @@
 // All react imports
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useState } from 'react';
 // All styles import
 import './App.css';
 // All components import
@@ -11,7 +12,6 @@ import { useAuthContext } from './hooks/useAuthContext';
 // All pages import
 import Dashboard from "./pages/dashboard/Dashboard";
 import Project from "./pages/project/Project";
-import { useState } from 'react';
 import Create from "./pages/create/Create";
 import Login from "./pages/login/Login";
 import Signup from './pages/signup/Signup';
@@ -46,7 +46,7 @@ function App() {
               />
             </>
           }
-          { user && <SideBar isOpen={isOpen} sidebarVisible={sidebarVisible} /> }
+          { user && <SideBar sidebarVisible={sidebarVisible} /> }
           <div className="container">
             <NavBar />
             <Routes>
