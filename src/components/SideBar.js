@@ -9,36 +9,52 @@ import AddIcon from "../assets/add_icon.svg";
 import Avatar from "./Avatar";
 // All hooks import
 import { useAuthContext } from "../hooks/useAuthContext";
+// All icons import
+import { AiOutlineClose } from "react-icons/ai";
+import { useState } from "react";
 
-const SideBar = () => {
+const SideBar = ({ isOpen, sidebarVisible }) => {
     const { user } = useAuthContext();
     // destructure needed properties from the user object
     const { displayName, photoURL } = user;
+    const [close, setClose] = useState(true);
+
+    console.log(close);
+
+    const handleClose = () => {
+        setClose(!close);
+    };
 
     return (
-        <div className="sidebar">
-            <div className="sidebar-content">
-                <div className="user">
-                    <Avatar src={ photoURL } />
-                    <p>Hey { displayName } </p>
-                </div>
-                <nav className="links">
-                    <ul>
-                        <li>
-                            <NavLink end to="/" >
-                                <img src={DashBoardIcon} alt="dashboard-icon" />
-                                <span>Dashboard</span>
-                            </NavLink>
-                            <NavLink to="/create" >
-                                <img src={AddIcon} alt="add-project-icon" />
-                                <span>New Project</span>
-                            </NavLink>
-                        </li>
-                    </ul>
-                </nav>
+        <>
+            <div className={`sidebar ${ sidebarVisible ? 'sidebar-open': 'sidebar'} ${ !isOpen ? 'sidebar' : 'sidebar-open'}`}>
+                <div className="sidebar-content">
+                    <div className="user">
+                        <AiOutlineClose 
+                            className={`close-menu-open`}
+                            onClick={handleClose}
+                        />
+                        <Avatar src={ photoURL } />
+                        <p>Hey { displayName } </p>
+                    </div>
+                    <nav className="links">
+                        <ul>
+                            <li>
+                                <NavLink end to="/" >
+                                    <img src={DashBoardIcon} alt="dashboard-icon" />
+                                    <span>Dashboard</span>
+                                </NavLink>
+                                <NavLink to="/create" >
+                                    <img src={AddIcon} alt="add-project-icon" />
+                                    <span>New Project</span>
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </nav>
 
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 

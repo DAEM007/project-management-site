@@ -11,18 +11,42 @@ import { useAuthContext } from './hooks/useAuthContext';
 // All pages import
 import Dashboard from "./pages/dashboard/Dashboard";
 import Project from "./pages/project/Project";
+import { useState } from 'react';
 import Create from "./pages/create/Create";
 import Login from "./pages/login/Login";
 import Signup from './pages/signup/Signup';
+// All icons import
+import { AiOutlineMenu } from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';
 
 function App() {
   const { user, authIsReady } = useAuthContext();
+  const [isOpen, setIsOpen] = useState(false);
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+  
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    setSidebarVisible(!sidebarVisible);
+  };
 
   return (
     <div className="App">
       { authIsReady && (
         <Router>
-          { user && <SideBar /> }
+          { user && 
+            <>
+              <AiOutlineMenu 
+                className={`menu-open ${ isOpen ? 'open' : 'close' }`}
+                onClick={toggleMenu}
+              />
+              <AiOutlineClose
+                className={`menu-close ${ !isOpen ? 'open' : 'close' }`}
+                onClick={toggleMenu}
+              />
+            </>
+          }
+          { user && <SideBar isOpen={isOpen} sidebarVisible={sidebarVisible} /> }
           <div className="container">
             <NavBar />
             <Routes>

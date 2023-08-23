@@ -6,3 +6,38 @@
   flex-grow: 1;
   padding: 0 60px;
 }
+
+/* Responsive styles */
+@media (min-width: 375px) and (max-width: 760px) {
+
+  .App .menu-open {
+    position: absolute;
+    top: 5%;
+    left: 3%;
+  }
+
+  .App .menu-close {
+    position: absolute;
+    top: 5%;
+    left: 3%;
+  }
+
+  .open {
+    display: none;
+  }
+
+  .close {
+    display: block;
+  }
+
+}
+
+@media (min-width: 760px) {
+  .App .menu-open {
+      display: none;
+  }
+
+  .App .menu-close {
+      display: none;
+  }
+}
