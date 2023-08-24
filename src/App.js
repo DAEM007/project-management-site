@@ -17,17 +17,14 @@ import Login from "./pages/login/Login";
 import Signup from './pages/signup/Signup';
 // All icons import
 import { AiOutlineMenu } from 'react-icons/ai';
-import { AiOutlineClose } from 'react-icons/ai';
 
 function App() {
   const { user, authIsReady } = useAuthContext();
   const [isOpen, setIsOpen] = useState(false);
-  const [sidebarVisible, setSidebarVisible] = useState(false);
   
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    setSidebarVisible(!sidebarVisible);
   };
 
   return (
@@ -40,13 +37,9 @@ function App() {
                 className={`menu-open ${ isOpen ? 'open' : 'close' }`}
                 onClick={toggleMenu}
               />
-              <AiOutlineClose
-                className={`menu-close ${ !isOpen ? 'open' : 'close' }`}
-                onClick={toggleMenu}
-              />
             </>
           }
-          { user && <SideBar sidebarVisible={sidebarVisible} /> }
+          { user && <SideBar isOpen={isOpen} toggleMenu={toggleMenu}/> }
           <div className="container">
             <NavBar />
             <Routes>
