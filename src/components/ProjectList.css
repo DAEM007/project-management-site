@@ -46,4 +46,8 @@
     height: 30px;
 }
 
-
+@media (min-width: 375px) and (max-width: 768px) {
+    .project-list {
+        grid-template-columns: auto;
+    }
+}
