@@ -55,3 +55,28 @@
     filter: invert(40%);
 }
 
+@media (min-width: 375px) and (max-width: 760px) {
+    .sidebar {
+        display: none;
+    }
+
+    .sidebar .close-menu-open {
+        display: block;
+    }
+
+    .sidebar-open {
+        display: block;
+    }
+    
+}
+
+@media (min-width: 760px) {
+    .sidebar {
+        display: block;
+    }
+
+    .sidebar .close-menu-open  {
+        display: none;
+    }
+
+}

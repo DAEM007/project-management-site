@@ -92,3 +92,18 @@
     font-size: 0.9em;
 }
 
+@media (min-width: 375px) and (max-width: 768px) {
+
+    .project-details {
+        display: block;
+    }
+
+    .project-summary + .btn {
+        margin-bottom: 50px;
+    }
+
+    .add-comment .btn {
+        margin-top: 20px;
+    }
+
+}

@@ -6,6 +6,7 @@
 
 .project-filter nav {
     display: flex;
+    flex-wrap: wrap;
     padding: 10px;
     background-color: #fff;
     border-radius: 4px;
@@ -34,3 +35,4 @@
 .project-filter button.active {
     color: var(--primary-color);
 } 
+

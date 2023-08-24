@@ -1,5 +1,6 @@
 // All react imports
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useState } from 'react';
 // All styles import
 import './App.css';
 // All components import
@@ -14,15 +15,30 @@ import Project from "./pages/project/Project";
 import Create from "./pages/create/Create";
 import Login from "./pages/login/Login";
 import Signup from './pages/signup/Signup';
+// All icons import
+import { AiOutlineMenu } from 'react-icons/ai';
 
 function App() {
   const { user, authIsReady } = useAuthContext();
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <div className="App">
       { authIsReady && (
         <Router>
-          { user && <SideBar /> }
+          { user && 
+            <>
+              <AiOutlineMenu 
+                className={`menu-open ${ isOpen ? 'open' : 'close' }`}
+                onClick={toggleMenu}
+              />
+            </>
+          }
+          { user && <SideBar isOpen={isOpen} toggleMenu={toggleMenu}/> }
           <div className="container">
             <NavBar />
             <Routes>
