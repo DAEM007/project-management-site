@@ -22,7 +22,6 @@ function App() {
   const { user, authIsReady } = useAuthContext();
   const [isOpen, setIsOpen] = useState(false);
   
-
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
