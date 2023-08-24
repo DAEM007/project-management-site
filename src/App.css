@@ -3,6 +3,7 @@
 }
 
 .App .container{
+  width: 100%;
   flex-grow: 1;
   padding: 0 60px;
 }
@@ -33,11 +34,13 @@
 }
 
 @media (min-width: 760px) {
+  
   .App .menu-open {
-      display: none;
+    display: none;
   }
 
   .App .menu-close {
-      display: none;
+    display: none;
   }
+
 }
