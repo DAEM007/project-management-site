@@ -1,6 +1,5 @@
 // All react imports
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 // All styles import
 import "./SideBar.css";
 // All images import
@@ -13,26 +12,18 @@ import { useAuthContext } from "../hooks/useAuthContext";
 // All icons import
 import { AiOutlineClose } from "react-icons/ai";
 
-const SideBar = ({ sidebarVisible }) => {
+const SideBar = ({ isOpen, toggleMenu }) => {
     const { user } = useAuthContext();
-    // destructure needed properties from the user object
     const { displayName, photoURL } = user;
-    const [close, setClose] = useState(false);
-
-    console.log(close);
-
-    const handleClose = () => {
-        setClose(!close);
-    };
 
     return (
         <>
-            <div className={`sidebar ${ sidebarVisible ? 'sidebar-open': ''} ${ close ? 'sidebar' : ''}`}>
+            <div className={`sidebar ${ isOpen ? 'sidebar-open': ''}`}>
                 <div className="sidebar-content">
                     <div className="user">
                         <AiOutlineClose 
                             className={`close-menu-open`}
-                            onClick={handleClose}
+                            onClick={toggleMenu}
                         />
                         <Avatar src={ photoURL } />
                         <p>Hey { displayName } </p>
