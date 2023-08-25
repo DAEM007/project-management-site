@@ -46,6 +46,11 @@
 }
 
 /* project comments */
+
+.project-comments {
+    margin-bottom: 30px;
+}
+
 .project-comments label {
     margin-bottom: 0px;
 }
