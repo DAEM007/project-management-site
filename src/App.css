@@ -10,7 +10,7 @@
 
 /* Responsive styles */
 @media (min-width: 375px) and (max-width: 760px) {
-
+  
   .App .menu-open {
     position: absolute;
     top: 5%;
