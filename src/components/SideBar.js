@@ -22,7 +22,7 @@ const SideBar = ({ isOpen, toggleMenu }) => {
                 <div className="sidebar-content">
                     <div className="user">
                         <AiOutlineClose 
-                            className={`close-menu-open`}
+                            className="close-menu-open"
                             onClick={toggleMenu}
                         />
                         <Avatar src={ photoURL } />
@@ -31,11 +31,15 @@ const SideBar = ({ isOpen, toggleMenu }) => {
                     <nav className="links">
                         <ul>
                             <li>
-                                <NavLink end to="/" >
+                                <NavLink end to="/" 
+                                    onClick={toggleMenu}
+                                >
                                     <img src={DashBoardIcon} alt="dashboard-icon" />
                                     <span>Dashboard</span>
                                 </NavLink>
-                                <NavLink to="/create" >
+                                <NavLink to="/create" 
+                                    onClick={toggleMenu}
+                                >
                                     <img src={AddIcon} alt="add-project-icon" />
                                     <span>New Project</span>
                                 </NavLink>
