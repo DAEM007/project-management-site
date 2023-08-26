@@ -44,7 +44,8 @@ const Dashboard = () => {
 
     return (
         <div>
-            <h2 className="project-title">Dashboard</h2>
+            {/* <h2 className="project-title">Dashboard</h2> */}
+            { user && <h4 className="project-title">{`Welcome, ${user.displayName}`}</h4> }
             { error && <p className="error">{error}</p> }
             { documents && 
                 (<ProjectFilter 
