@@ -2,6 +2,7 @@
 .sidebar {
     width: 300px;
     min-width: 300px;
+    max-width: 100%; /* check... */
     background: var(--primary-color);
     min-height: 100vh;
     box-sizing: border-box;
@@ -55,9 +56,11 @@
     filter: invert(40%);
 }
 
+/* Responsive styles */
 @media (min-width: 375px) and (max-width: 760px) {
     .sidebar {
         display: none;
+        z-index: 9999;
     }
 
     .sidebar .close-menu-open {
@@ -65,7 +68,14 @@
     }
 
     .sidebar-open {
-        display: block;
+        display: flex;
+        width: 100%;
+        min-width: auto;
+    }
+
+    .sidebar-content {
+        background-color: var(--primary-color);
+        height: 100%;
     }
     
 }
