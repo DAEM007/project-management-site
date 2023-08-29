@@ -42,4 +42,4 @@ Each section comes with a filtering feature to help you focus on specific tasks 
 4. Run the application using `npm run start`.
 5. Access the dashboard through your web browser at [https://project-management-site-1888d.web.app/].
 
-Happy project management! If you have any questions or need further assistance, please don't hesitate to contact us.
+Happy project management! If you have any questions or need further assistance, please don't hesitate to contact us at [https://github.com/DAEM007/].
