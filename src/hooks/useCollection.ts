@@ -13,13 +13,13 @@ import {
   WhereFilterOp,
 } from "firebase/firestore";
 
-type QueryType = [string, WhereFilterOp, any];
-type OrderByType = [string, "asc" | "desc"];
+export type QueryType = [string, WhereFilterOp, any];
+export type OrderByType = [string, "asc" | "desc"];
 
 const useCollection = (
   col: string,
-  _query: QueryType,
-  _orderBy: OrderByType
+  _query?: QueryType,
+  _orderBy?: OrderByType
 ) => {
   const [documents, setDocuments] = useState<any[] | null>(null);
   const [error, setError] = useState<string | null>(null);
