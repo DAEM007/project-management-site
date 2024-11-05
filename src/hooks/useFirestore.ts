@@ -12,14 +12,14 @@ import {
   updateDoc,
 } from "firebase/firestore";
 
-interface InitialState {
+export interface InitialFireStoreState {
   error: string | null;
   isPending: boolean;
   document: DocumentData | null;
   success: boolean | null;
 }
 
-type Action =
+export type Action =
   | { type: "IS_PENDING" }
   | { type: "ADD_DOC"; payload: DocumentData }
   | { type: "DELETE_DOC" }
@@ -32,7 +32,7 @@ interface FirestoreDocument {
 }
 
 // reducer function
-const firestoreReducer = (state: InitialState, action: Action) => {
+const firestoreReducer = (state: InitialFireStoreState, action: Action) => {
   switch (action.type) {
     // check action type for isPending
     case "IS_PENDING":
@@ -81,7 +81,7 @@ const firestoreReducer = (state: InitialState, action: Action) => {
 };
 
 // inital state
-const initialState: InitialState = {
+const initialState: InitialFireStoreState = {
   error: null,
   isPending: false,
   document: null,
@@ -89,10 +89,9 @@ const initialState: InitialState = {
 };
 
 const useFirestore = (col: string) => {
-  const [response, dispatch] = useReducer<React.Reducer<InitialState, Action>>(
-    firestoreReducer,
-    initialState
-  );
+  const [response, dispatch] = useReducer<
+    React.Reducer<InitialFireStoreState, Action>
+  >(firestoreReducer, initialState);
   const [isCancelled, setIsCancelled] = useState(false);
 
   // collection reference
