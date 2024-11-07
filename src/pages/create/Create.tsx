@@ -77,19 +77,22 @@ const Create = () => {
     };
 
     // assignedUser
-    const assignedUserList = assignedUsers.map((assignedUser) => {
-      const assignedUserValue = assignedUser.value;
-      if (
-        typeof assignedUserValue === "object" &&
-        assignedUserValue.displayName
-      ) {
-        return {
-          displayName: assignedUserValue.displayName,
-          photoURL: assignedUserValue.photoURL,
-          id: assignedUserValue.id,
-        };
-      }
-    });
+    const assignedUserList = assignedUsers
+      .map((assignedUser) => {
+        const assignedUserValue = assignedUser.value;
+        if (
+          typeof assignedUserValue === "object" &&
+          assignedUserValue.displayName
+        ) {
+          return {
+            displayName: assignedUserValue.displayName,
+            photoURL: assignedUserValue.photoURL,
+            id: assignedUserValue.id,
+          };
+        }
+        return undefined;
+      })
+      .filter((assignedUser) => assignedUser !== undefined);
 
     // project object to be saved to firebase
     const project = {
