@@ -1,10 +1,7 @@
-// All react imports
 import { useState } from "react";
-// All firebase imports
 import { auth, db } from "../firebase/Config";
 import { signOut } from "firebase/auth";
 import { doc, FirestoreError, updateDoc } from "firebase/firestore";
-// All context imports
 import { useAuthContext } from "./useAuthContext";
 
 const useLogout = () => {
@@ -18,11 +15,15 @@ const useLogout = () => {
 
     try {
       // change the online/offline status
-      const { uid } = user;
-      const docRef = doc(db, "users", uid);
-      await updateDoc(docRef, {
-        online: false,
-      });
+      const uid = user?.uid;
+      if (uid) {
+        const docRef = doc(db, "users", uid);
+        await updateDoc(docRef, {
+          online: false,
+        });
+      } else {
+        throw new Error("uid is undefined");
+      }
 
       // sign/log users out
       await signOut(auth);
@@ -41,7 +42,6 @@ const useLogout = () => {
     }
   };
 
-  // return the destructured form of all variables and functions to be used
   return { error, ispending, logout };
 };
 
