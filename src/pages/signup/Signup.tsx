@@ -1,8 +1,5 @@
-// All react imports
 import { useState } from "react";
-// All hooks import
 import useSignup from "../../hooks/useSignup";
-// All styles
 import "./Signup.css";
 
 const Signup = () => {
@@ -16,7 +13,9 @@ const Signup = () => {
   // submit form
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signUp(email, password, name, thumbnail);
+    if (thumbnail) {
+      signUp(email, password, name, thumbnail);
+    }
   };
 
   // handle Thumbnail
