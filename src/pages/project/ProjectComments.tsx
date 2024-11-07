@@ -19,8 +19,8 @@ const ProjectComments = ({ project }: ProjectCommentProps) => {
     e.preventDefault();
 
     const commentToAdd = {
-      displayName: user.displayName,
-      photoURL: user.photoURL,
+      displayName: user?.displayName,
+      photoURL: user?.photoURL,
       content: newComment,
       createdAt: timestamp.now(),
       id: Math.random(),
