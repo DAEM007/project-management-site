@@ -23,7 +23,7 @@ const Dashboard = () => {
           case "mine":
             let assignedToMe = false;
             document.assignedUserList.forEach((u: User) => {
-              if (u.id === user.uid) {
+              if (u.id === user?.uid) {
                 assignedToMe = true;
               }
             });
