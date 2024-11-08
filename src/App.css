@@ -9,10 +9,10 @@
 }
 
 /* Responsive styles */
-@media (min-width: 375px) and (max-width: 760px) {
+@media (min-width: 324px) and (max-width: 768px) {
   .App .menu-open {
     position: absolute;
-    top: 5%;
+    top: 4.5%;
     left: 3%;
   }
 
@@ -31,7 +31,7 @@
   }
 }
 
-@media (min-width: 760px) {
+@media (min-width: 768px) {
   .App .menu-open {
     display: none;
   }

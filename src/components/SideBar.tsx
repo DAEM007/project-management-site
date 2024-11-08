@@ -28,11 +28,11 @@ const SideBar = ({ isOpen, toggleMenu }: SidebarProps) => {
           <nav className="links">
             <ul>
               <li>
-                <NavLink end to="/" onClick={toggleMenu}>
+                <NavLink end to="/">
                   <img src={DashBoardIcon} alt="dashboard-icon" />
                   <span>Dashboard</span>
                 </NavLink>
-                <NavLink to="/create" onClick={toggleMenu}>
+                <NavLink to="/create">
                   <img src={AddIcon} alt="add-project-icon" />
                   <span>New Project</span>
                 </NavLink>
