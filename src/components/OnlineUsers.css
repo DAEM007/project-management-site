@@ -1,54 +1,65 @@
-
 /* online users styles */
 .user-list {
-    width: 250px;
-    min-width: 250px;
-    padding: 30px;
-    box-sizing: border-box;
-    background: #fbfbfb;
-    color: var(--heading-color);
+  width: 250px;
+  min-width: 250px;
+  padding: 30px;
+  box-sizing: border-box;
+  background: #fbfbfb;
+  color: var(--heading-color);
 }
 
 .user-list h2 {
-    text-align: right;
-    margin-bottom: 40px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-    font-size: 1.2em;
+  text-align: right;
+  margin-bottom: 40px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 1.2em;
 }
 
 .user-list .user-list-item {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 20px auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 20px auto;
 }
 
 .user-list .avatar {
-    margin-left: 10px;
-    width: 40px;
-    height: 40px;
+  margin-left: 10px;
+  width: 40px;
+  height: 40px;
 }
 
 .user-list .online-user {
-    display: inline-block;
-    background-color: #0ebb50;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-right: 10px;
-    margin-top: 2px;
+  display: inline-block;
+  background-color: #0ebb50;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-top: 2px;
 }
 
 /* Responsive styles */
-@media (min-width: 375px) and (max-width: 760px) {
-    .user-list {
-        display: none;
-    }
+@media (min-width: 324px) and (max-width: 768px) {
+  .user-list {
+    display: none;
+  }
 }
 
-@media (min-width: 760px) {
-    .user-list {
-        display: block;
-    }
+/* @media (min-width: 768px) {
+  .user-list {
+    display: block;
+  }
+} */
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .user-list {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .user-list {
+    display: block;
+  }
 }

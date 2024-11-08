@@ -96,7 +96,7 @@
   font-size: 0.9em;
 }
 
-@media (min-width: 375px) and (max-width: 768px) {
+@media (min-width: 324px) and (max-width: 768px) {
   .project-details {
     display: block;
   }

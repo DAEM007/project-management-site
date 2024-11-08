@@ -19,11 +19,12 @@
 .project-filter button {
   background: transparent;
   border: 0;
+  padding-inline: 0.25rem;
   font-family: inherit;
   font-weight: bold;
   color: var(--text-color);
   cursor: pointer;
-  border-right: 1px solid #e4e4e4;
+  border-right: 2px solid #e4e4e4;
   font-size: 0.9em;
 }
 
